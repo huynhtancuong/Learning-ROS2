@@ -6,8 +6,17 @@ class MyNode: public rclcpp::Node
         MyNode(): Node("cpp_test")
         {
             RCLCPP_INFO(this->get_logger(), "Hello Cpp Node");
+            
+            timer_ = this->create_wall_timer(std::chrono::seconds(1),
+                                            std::bind(&MyNode::timerCallback, this));
         }
     private:
+        void timerCallback()
+        {
+            RCLCPP_INFO(this->get_logger(), "Hello");
+        }
+        
+        rclcpp::TimerBase::SharedPtr timer_;
 };
 
 int main(int argc, char **argv)
