@@ -3,7 +3,7 @@
 class MyNode: public rclcpp::Node
 {
     public:
-        MyNode(): Node("cpp_test")
+        MyNode(): Node("cpp_test"), counter_(0)
         {
             RCLCPP_INFO(this->get_logger(), "Hello Cpp Node");
             
@@ -13,10 +13,12 @@ class MyNode: public rclcpp::Node
     private:
         void timerCallback()
         {
-            RCLCPP_INFO(this->get_logger(), "Hello");
+            RCLCPP_INFO(this->get_logger(), "Hello %d", counter_);
+            counter_++;
         }
         
         rclcpp::TimerBase::SharedPtr timer_;
+        int counter_;
 };
 
 int main(int argc, char **argv)
