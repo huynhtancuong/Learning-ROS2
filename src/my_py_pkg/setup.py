@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             # the name of the executable is py_node
-            "py_node = my_py_pkg.my_first_node:main" 
+            "py_node = my_py_pkg.my_first_node:main",
+            "robot_news_station = my_py_pkg.robot_news_station:main"
         ],
     },
 )
