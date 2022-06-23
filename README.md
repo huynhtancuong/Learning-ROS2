@@ -10,10 +10,19 @@ The name of the executable is **py_node**, which can be found in the **package.x
 Firstly, we have to build the package using
 
 	$ colcon build
+or we can build package individually
+
+ 	$ colcon build --packages-select <name of package>
+or we can use symlink so as to no need to rebuild manually package (only for python node)
+
+	$ colcon build --packages-select <name of package> --symlink-install
 
 Then you can run the node inside this package using
 
 	$ ros2 run my_py_pkg py_node
+We can run ROS2 package with given name 
+	
+	$ ros2 run <package> <node to run> --ros-args -r __node:=<given name of node>
 
 # Python Node template
 ```python
